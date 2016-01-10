@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>POO Javascript</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery/jquery.js" type="text/javascript"></script>
+        <link href="css/object-Table.css" rel="stylesheet" type="text/css"/>
+        <script src="js/object-Table.js" type="text/javascript"></script>
+        <script>
+            $(function () {
+                $.ajax({
+                    url: "usuarioServlet",
+                    type: "post"
+                }).done(function (data) {
+                    var arreglo = ["id", "usuario", "edad"];
+                    //primer valor nombre de las cabezeras si no deseas colocar los nombres por defecto tendra 3 columnas pero sin cabezeras
+                    //segundo valor si desea tener una busqueda, tener un select personal o por defecto tener del mismo
+                    //tercer se coloca un string con el nombre del select pero
+                    var u = new usuario(arreglo,true);
+                    u._setData(data);
+                    u._filter(data);
+                });
+            })
+        </script>
+
+    </head>
+    <body>
+        <div id="contenido"></div>
+    </body>
+</html>
